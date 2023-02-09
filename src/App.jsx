@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 
 function App() {
+  const {isPostLoading, setIsPostLoading} = useState(false);
   const [people, setPeople] = useState(undefined);
   const {name, setName} = useState(undefined);
   const [age, setAge] = useState(undefined);
@@ -23,27 +24,28 @@ function App() {
   
   const data = fetch(`https://swapi.dev/api/people/1/`)
   
+
   
-  
-  const Walker = ({data}) => <div>
- 
-    <h2>{data.name}</h2>
- 
-   
+  const Walker = () => <div>
+    <p className="sw">Персонажи звездных войн</p>
+    <h2></h2>
   <Link to="/characters">Назад</Link></div> 
   const Wader = () =>  <div>
+    <p className="sw">Персонажи звездных войн</p>
     <h2>{name}</h2>
   <Link to="/characters">Назад</Link></div> 
   const R2D2 = () =>  <div>
+    <p className="sw">Персонажи звездных войн</p>
     <h2>Р2-Д2</h2>
-  <Link to="/characters">Назад</Link></div> 
+  <Link to="/characters">Назад</Link></div>
+   
   return (
   <div>
     <Info />
     <Routes>
       <Route path="/characters" element={<Characters />} />
       <Route path="/planets" element={<Planets />} />
-      <Route path="/films" element={<Films />} />
+      <Route path="/" element={<Films />} />
       <Route path="/species" element={<Species />} />
       <Route path="/vehicles" element={<Vehicles />} />
       <Route path="/starships" element={<Starships />} />
